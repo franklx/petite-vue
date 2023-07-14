@@ -1,6 +1,6 @@
 {
-  "name": "petite-vue",
-  "version": "0.4.1",
+  "name": "petite-vue-pro",
+  "version": "0.4.2",
   "description": "5kb subset of Vue optimized for progressive enhancement",
   "files": [
     "dist"
@@ -29,7 +29,7 @@
   "keywords": [
     "vue"
   ],
-  "author": "Evan You",
+  "author": "wang yong",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vuejs/petite-vue/discussions"
