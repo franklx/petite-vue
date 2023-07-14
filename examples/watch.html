@@ -1,0 +1,22 @@
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+
+<script type="module">
+    import { createApp } from '../dist/petite-vue.es.js'
+
+    createApp({
+        count: 1,
+        mounted() {
+            this.$watch(()=>this.count, (val, oldVal) => {
+                console.log(`new: ${val}, old: ${oldVal}`)
+            })
+        }
+    }).mount('#app')
+</script>
+
+<div id="app" @vue:mounted="mounted" v-cloak>
+    <button @click="count++">{{count}}</button>
+</div>

@@ -36,8 +36,8 @@
   },
   "homepage": "https://github.com/vuejs/petite-vue#readme",
   "devDependencies": {
-    "@vue/reactivity": "^3.2.27",
-    "@vue/shared": "^3.2.27",
+    "@vue/reactivity": "^3.3.4",
+    "@vue/shared": "^3.3.4",
     "chalk": "^4.1.1",
     "conventional-changelog-cli": "^2.1.1",
     "enquirer": "^2.3.6",
@@ -46,5 +46,8 @@
     "semver": "^7.3.5",
     "typescript": "^4.4.3",
     "vite": "^2.7.12"
+  },
+  "dependencies": {
+    "@vue-reactivity/watch": "^0.2.0"
   }
 }
