@@ -1,3 +1,8 @@
+# petite-vue-pro
+
+'petite-vue-pro' forked from 'petite-vue', in order to expand some other commonly used functions, such as 'watch'.
+Examples are 'in examples/watch.html'.
+
 # petite-vue
 
 `petite-vue` is an alternative distribution of [Vue](https://vuejs.org) optimized for [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement). It provides the same template syntax and reactivity mental model as standard Vue. However, it is specifically optimized for "sprinkling" a small amount of interactions on an existing HTML page rendered by a server framework. See more details on [how it differs from standard Vue](#comparison-with-standard-vue).
