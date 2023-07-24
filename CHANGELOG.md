@@ -1,3 +1,7 @@
+## [0.4.5](https://github.com/vuejs/petite-vue/compare/v0.4.4...v0.4.5) (2023-07-24)
+
+## [0.4.5](https://github.com/vuejs/petite-vue/compare/v0.4.4...v0.4.5) (2023-07-24)
+
 ## [0.4.4](https://github.com/vuejs/petite-vue/compare/v0.4.3...v0.4.4) (2023-07-14)
 
 ### Bug Fixes

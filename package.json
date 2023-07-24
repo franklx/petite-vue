@@ -1,6 +1,6 @@
 {
   "name": "petite-vue-pro",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "5kb subset of Vue optimized for progressive enhancement",
   "files": [
     "dist"
@@ -36,8 +36,8 @@
   },
   "homepage": "https://github.com/vuejs/petite-vue#readme",
   "devDependencies": {
-    "@vue/reactivity": "^3.3.4",
-    "@vue/shared": "^3.3.4",
+    "@vue/reactivity": "^3.2.29",
+    "@vue/shared": "^3.2.29",
     "chalk": "^4.1.1",
     "conventional-changelog-cli": "^2.1.1",
     "enquirer": "^2.3.6",
