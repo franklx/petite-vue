@@ -4,7 +4,7 @@ import { Directive } from './directives'
 import { bindContextMethods, createContext } from './context'
 import { toDisplayString } from './directives/text'
 import { nextTick } from './scheduler'
-import { watch } from '@vue-reactivity/watch'
+import { watch } from './watch'
 
 const escapeRegex = (str: string) =>
   str.replace(/[-.*+?^${}()|[\]\/\\]/g, '\\$&')
