@@ -13,9 +13,9 @@ export const _if = (el: Element, exp: string, ctx: Context) => {
     console.warn(`v-if expression cannot be empty.`)
   }
 
-  const parent = el.parentElement!
+  const parent = (el.parentElement ? el.parentElement : el.parentNode) as Element
   const anchor = new Comment('v-if')
-  parent.insertBefore(anchor, el)
+  parent && parent.insertBefore(anchor, el)
 
   const branches: Branch[] = [
     {
@@ -32,8 +32,9 @@ export const _if = (el: Element, exp: string, ctx: Context) => {
     if (
       checkAttr(elseEl, 'v-else') === '' ||
       (elseExp = checkAttr(elseEl, 'v-else-if'))
-    ) {
-      parent.removeChild(elseEl)
+    )
+    {
+      parent && parent.removeChild(elseEl)
       branches.push({ exp: elseExp, el: elseEl })
     } else {
       break
@@ -41,14 +42,14 @@ export const _if = (el: Element, exp: string, ctx: Context) => {
   }
 
   const nextNode = el.nextSibling
-  parent.removeChild(el)
+  parent && parent.removeChild(el)
 
   let block: Block | undefined
   let activeBranchIndex: number = -1
 
   const removeActiveBlock = () => {
     if (block) {
-      parent.insertBefore(anchor, block.el)
+      parent && parent.insertBefore(anchor, block.el)
       block.remove()
       block = undefined
     }
@@ -62,7 +63,7 @@ export const _if = (el: Element, exp: string, ctx: Context) => {
           removeActiveBlock()
           block = new Block(el, ctx)
           block.insert(parent, anchor)
-          parent.removeChild(anchor)
+          parent && parent.removeChild(anchor)
           activeBranchIndex = i
         }
         return

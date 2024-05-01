@@ -32,6 +32,14 @@ Examples are 'in examples/watch.html'.
   {{ count }}
   <button @click="count++">inc</button>
 </div>
+
+<!-- another example -->
+<textarea
+        v-scope="{width: $root.offsetWidth, height: $root.offsetHeight}"
+        @click="width = $el.offsetWidth; height = $el.offsetHeight;"
+>
+{{ width }} &times; {{ height }}
+</textarea>
 ```
 
 - Use `v-scope` to mark regions on the page that should be controlled by `petite-vue`.
@@ -62,9 +70,9 @@ Or, use the ES module build:
 
 The short CDN URL is meant for prototyping. For production usage, use a fully resolved CDN URL to avoid resolving and redirect cost:
 
-- Global build: `https://unpkg.com/petite-vue@0.2.2/dist/petite-vue.iife.js`
+- Global build: `https://unpkg.com/petite-vue@0.4.6/dist/petite-vue.iife.js`
   - exposes `PetiteVue` global, supports auto init
-- ESM build: `https://unpkg.com/petite-vue@0.2.2/dist/petite-vue.es.js`
+- ESM build: `https://unpkg.com/petite-vue@0.4.6/dist/petite-vue.es.js`
   - Must be used with `<script type="module">`
 
 ### Root Scope
@@ -97,7 +105,7 @@ The `createApp` function accepts a data object that serves as the root scope for
 </div>
 ```
 
-Note `v-scope` doesn't need to have a value here and simply serves as a hint for `petite-vue` to process the element.
+Note: `v-scope` doesn't need to have a value here and simply serves as a hint for `petite-vue` to process the element.
 
 ### Explicit Mount Target
 
@@ -131,7 +139,23 @@ You can listen to the special `vue:mounted` and `vue:unmounted` lifecycle events
 ></div>
 ```
 
-### `v-effect`
+### globals
+
+#### `$el`
+
+represent the current element
+
+#### `$root`
+
+represent the element of `v-scope`
+
+### directives
+
+#### `v-text`
+
+#### `v-bind`
+
+#### `v-effect`
 
 Use `v-effect` to execute **reactive** inline statements:
 
@@ -148,6 +172,48 @@ Another example of replacing the `todo-focus` directive found in the original Vu
 
 ```html
 <input v-effect="if (todo === editedTodo) $el.focus()" />
+```
+
+#### `v-if`
+
+#### `v-show`
+
+#### `v-for`
+
+```html
+<div v-scope="[{name: 'rush', items: 3}, {...}]">
+  <!-- v-for loop on arrays and objects -->
+  <div v-for="customer in $data" :key="customer.name">
+    <!-- print values -->
+    <p v-for="value in customer" :key="value"> {{ value }} </p>
+    <!-- print values and keys -->
+    <p v-for="(value, key) in customer" :key="value"> {{ key }}: {{ value }} </p>
+  </div>
+
+  <button @click="$data.push({name: 'random', ...})">add</button>
+</div>
+```
+
+#### `v-model`
+
+#### `v-on`
+
+#### `v-cloak`
+
+avoid flashing render which happens until `petite-vue` is loaded, after it has loaded it will remove these directives
+
+> This directive is only needed in no-build-step setups
+
+``` html
+<style>
+[v-cloak] {
+  display: none;
+}
+</style>
+
+<div v-cloak>
+  {{ message }}
+</div>
 ```
 
 ### Components
@@ -311,6 +377,35 @@ createApp({
 }).mount()
 ```
 
+### Use Plugins
+
+You can write custom directive then distribute it as a package, then add it to create vue, like:
+
+```html
+<div v-scope="{counter: 0}" v-log="inside petite-vue scope">
+  <button @click="counter++">increase</button>
+</div>
+
+<script type="module">
+  import log from './log'
+  import { createApp } from 'peteite-vue'
+  createApp().use(log).mount()
+</script>
+```
+
+A plugin code similar to vue plugins code:
+
+```js
+// inside log.js plugin file
+export default {
+  install: (app, options) => {
+    app.directive('log', ({exp}) => {
+      console.log(exp)
+    })
+  }
+}
+```
+
 ## Examples
 
 Check out the [examples directory](https://github.com/vuejs/petite-vue/tree/main/examples).
@@ -322,10 +417,11 @@ Check out the [examples directory](https://github.com/vuejs/petite-vue/tree/main
 - `v-scope`
 - `v-effect`
 - `@vue:mounted` & `@vue:unmounted` events
+- `$root` refer to component root element
 
 ### Has Different Behavior
 
-- In expressions, `$el` points to the current element the directive is bound to (instead of component root element)
+- In expressions, `$el` points to the current element the directive is bound to (instead of component root element which can be accessed by `$root`)
 - `createApp()` accepts global state instead of a component
 - Components are simplified into object-returning functions
 - Custom directives have a different interface

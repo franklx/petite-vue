@@ -7,7 +7,7 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
-    minify: 'terser',
+    minify: 'esbuild',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'PetiteVue',

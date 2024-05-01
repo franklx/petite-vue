@@ -15,6 +15,7 @@ const modifierRE = /\.([\w-]+)/g
 export let inOnce = false
 
 export const walk = (node: Node, ctx: Context): ChildNode | null | void => {
+  const parentCtx = ctx
   const type = node.nodeType
   if (type === 1) {
     // Element
@@ -39,7 +40,8 @@ export const walk = (node: Node, ctx: Context): ChildNode | null | void => {
 
     // v-scope
     if ((exp = checkAttr(el, 'v-scope')) || exp === '') {
-      const scope = exp ? evaluate(ctx.scope, exp) : {}
+      const scope = exp ? evaluate(ctx.scope, exp, el) : {}
+      scope.$root = el
       ctx = createScopedContext(ctx, scope)
       if (scope.$template) {
         resolveTemplate(el, scope.$template)
@@ -54,6 +56,9 @@ export const walk = (node: Node, ctx: Context): ChildNode | null | void => {
 
     // ref
     if ((exp = checkAttr(el, 'ref'))) {
+      if (ctx !== parentCtx) {
+        applyDirective(el, ref, `"${exp}"`, parentCtx)
+      }
       applyDirective(el, ref, `"${exp}"`, ctx)
     }
 
@@ -121,6 +126,7 @@ const processDirective = (
   let dir: Directive
   let arg: string | undefined
   let modifiers: Record<string, true> | undefined
+  const attrName = raw;
 
   // modifiers
   raw = raw.replace(modifierRE, (_, m) => {
@@ -143,7 +149,7 @@ const processDirective = (
   if (dir) {
     if (dir === bind && arg === 'ref') dir = ref
     applyDirective(el, dir, exp, ctx, arg, modifiers)
-    el.removeAttribute(raw)
+    el.removeAttribute(attrName)
   } else if (import.meta.env.DEV) {
     console.error(`unknown custom directive ${raw}.`)
   }
@@ -183,5 +189,5 @@ const resolveTemplate = (el: Element, template: string) => {
     el.appendChild((templateEl as HTMLTemplateElement).content.cloneNode(true))
     return
   }
-  el.innerHTML = template
+  el.innerHTML = template.replace(/<[\/\s]*template\s*>/ig, '')
 }
