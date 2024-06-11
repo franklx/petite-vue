@@ -1,5 +1,5 @@
 /**
-* @vue/shared v3.4.26
+* @vue/shared v3.4.27
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -97,7 +97,7 @@ function ne(e, t) {
   return e.findIndex((n) => j(n, t));
 }
 /**
-* @vue/reactivity v3.4.26
+* @vue/reactivity v3.4.27
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -1030,7 +1030,7 @@ const Pe = (e) => e.replace(/[-.*+?^${}()|[\]\/\\]/g, "\\$&"), En = (e) => {
       n.forEach((s) => s.teardown());
     }
   };
-}, bn = "0.4.6", De = document.currentScript;
+}, bn = "0.4.6-p2", De = document.currentScript;
 De && De.hasAttribute("init") && En().mount();
 export {
   En as createApp,

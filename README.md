@@ -1,6 +1,6 @@
-# petite-vue-pro
+# @franklx/petite-vue
 
-'petite-vue-pro' forked from 'petite-vue', in order to expand some other commonly used functions, such as 'watch'.
+'@franklx/petite-vue' forked from 'petite-vue', in order to expand some other commonly used functions, such as 'watch'.
 Examples are 'in examples/watch.html'.
 
 # petite-vue
@@ -72,7 +72,7 @@ The short CDN URL is meant for prototyping. For production usage, use a fully re
 
 - Global build: `https://unpkg.com/petite-vue@0.4.6/dist/petite-vue.iife.js`
   - exposes `PetiteVue` global, supports auto init
-- ESM build: `https://unpkg.com/petite-vue@0.4.6/dist/petite-vue.es.js`
+- ESM build: `https://unpkg.com/petite-vue@0.4.6/dist/petite-vue.js`
   - Must be used with `<script type="module">`
 
 ### Root Scope

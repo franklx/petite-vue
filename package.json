@@ -1,19 +1,19 @@
 {
-  "name": "petite-vue",
-  "version": "0.4.6",
+  "name": "@franklx/petite-vue",
+  "version": "0.4.7",
   "description": "5kb subset of Vue optimized for progressive enhancement",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "dist/petite-vue.umd.js",
+  "main": "dist/petite-vue.umd.cjs",
   "unpkg": "dist/petite-vue.iife.js",
   "jsdelivr": "dist/petite-vue.iife.js",
-  "module": "./dist/petite-vue.es.js",
+  "module": "./dist/petite-vue.js",
   "exports": {
     ".": {
-      "import": "./dist/petite-vue.es.js",
-      "require": "./dist/petite-vue.umd.js"
+      "import": "./dist/petite-vue.js",
+      "require": "./dist/petite-vue.umd.cjs"
     }
   },
   "types": "./dist/types/index.d.ts",
@@ -21,11 +21,11 @@
     "dev": "vite",
     "build": "vite build && tsc",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release": "node scripts/release.js"
+    "release": "pnpm publish --access public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tmcdos/petite-vue.git"
+    "url": "git+https://github.com/franklx/petite-vue.git"
   },
   "keywords": [
     "vue"
@@ -35,17 +35,17 @@
   "bugs": {
     "url": "https://github.com/vuejs/petite-vue/discussions"
   },
-  "homepage": "https://github.com/tmcdos/petite-vue#readme",
+  "homepage": "https://github.com/franklx/petite-vue#readme",
   "devDependencies": {
-    "@vue/reactivity": "^3.4.0",
-    "@vue/shared": "^3.4.0",
+    "@vue/reactivity": "^3.4.27",
+    "@vue/shared": "^3.4.27",
     "chalk": "^5.3.0",
     "conventional-changelog-cli": "^4.1.0",
     "enquirer": "^2.4.1",
     "execa": "^8.0.1",
-    "prettier": "^3.1.1",
-    "semver": "^7.5.4",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.10"
+    "prettier": "^3.3.1",
+    "semver": "^7.6.2",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.13"
   }
 }
