@@ -1,6 +1,6 @@
 {
   "name": "@franklx/petite-vue",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "5kb subset of Vue optimized for progressive enhancement",
   "type": "module",
   "files": [
