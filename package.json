@@ -1,6 +1,6 @@
 {
   "name": "@franklx/petite-vue",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "description": "5kb subset of Vue optimized for progressive enhancement",
   "type": "module",
   "files": [
@@ -37,15 +37,15 @@
   },
   "homepage": "https://github.com/franklx/petite-vue#readme",
   "devDependencies": {
-    "@vue/reactivity": "^3.4.27",
-    "@vue/shared": "^3.4.27",
+    "@vue/reactivity": "^3.5.3",
+    "@vue/shared": "^3.5.3",
     "chalk": "^5.3.0",
     "conventional-changelog-cli": "^4.1.0",
     "enquirer": "^2.4.1",
     "execa": "^8.0.1",
-    "prettier": "^3.3.1",
-    "semver": "^7.6.2",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.13"
+    "prettier": "^3.3.3",
+    "semver": "^7.6.3",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.3"
   }
 }

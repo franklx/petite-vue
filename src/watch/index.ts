@@ -182,7 +182,7 @@ function doWatch(
 
   let oldValue = isMultiSource ? [] : INITIAL_WATCHER_VALUE
   const job: SchedulerJob = () => {
-    if (!effect.active)
+    if (!effect.dirty)
       return
 
     if (cb) {
@@ -230,7 +230,8 @@ function doWatch(
     }
   }
 
-  const effect = new ReactiveEffect(getter, scheduler)
+  const effect = new ReactiveEffect(getter)
+  effect.scheduler = scheduler
 
   // initial run
   if (cb) {
